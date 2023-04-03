@@ -1,0 +1,38 @@
+[2023-03-21 12:22:03,557] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: First_dag_v2.second_task 2023-03-21T12:22:01.252301+00:00 [queued]>
+[2023-03-21 12:22:03,601] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: First_dag_v2.second_task 2023-03-21T12:22:01.252301+00:00 [queued]>
+[2023-03-21 12:22:03,606] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21 12:22:03,609] {taskinstance.py:1069} INFO - Starting attempt 1 of 6
+[2023-03-21 12:22:03,614] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21 12:22:03,646] {taskinstance.py:1089} INFO - Executing <Task(BashOperator): second_task> on 2023-03-21T12:22:01.252301+00:00
+[2023-03-21 12:22:03,650] {standard_task_runner.py:52} INFO - Started process 55 to run task
+[2023-03-21 12:22:03,655] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'First_dag_v2', 'second_task', '2023-03-21T12:22:01.252301+00:00', '--job-id', '4', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpxrvv27ca', '--error-file', '/tmp/tmpjtetdwne']
+[2023-03-21 12:22:03,656] {standard_task_runner.py:77} INFO - Job 4: Subtask second_task
+[2023-03-21 12:22:03,705] {logging_mixin.py:104} INFO - Running <TaskInstance: First_dag_v2.second_task 2023-03-21T12:22:01.252301+00:00 [running]> on host 8c52af15d172
+[2023-03-21 12:22:03,748] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=First_dag_v2
+AIRFLOW_CTX_TASK_ID=second_task
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-21T12:22:01.252301+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-21T12:22:01.252301+00:00
+[2023-03-21 12:22:03,751] {bash.py:135} INFO - Tmp dir root location: 
+ /tmp
+[2023-03-21 12:22:03,753] {bash.py:158} INFO - Running command: echo I'm the second task and the first task executed first
+[2023-03-21 12:22:03,772] {bash.py:169} INFO - Output:
+[2023-03-21 12:22:03,821] {bash.py:173} INFO - /bin/bash: -c: line 0: unexpected EOF while looking for matching `''
+[2023-03-21 12:22:03,827] {bash.py:173} INFO - /bin/bash: -c: line 1: syntax error: unexpected end of file
+[2023-03-21 12:22:03,833] {bash.py:177} INFO - Command exited with return code 1
+[2023-03-21 12:22:03,866] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/bash.py", line 180, in execute
+    raise AirflowException('Bash command failed. The command returned a non-zero exit code.')
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code.
+[2023-03-21 12:22:03,880] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=First_dag_v2, task_id=second_task, execution_date=20230321T122201, start_date=20230321T122203, end_date=20230321T122203
+[2023-03-21 12:22:04,002] {local_task_job.py:146} INFO - Task exited with return code 1

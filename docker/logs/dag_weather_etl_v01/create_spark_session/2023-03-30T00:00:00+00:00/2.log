@@ -1,0 +1,45 @@
+[2023-04-02 15:55:22,962] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v01.create_spark_session 2023-03-30T00:00:00+00:00 [queued]>
+[2023-04-02 15:55:23,096] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v01.create_spark_session 2023-03-30T00:00:00+00:00 [queued]>
+[2023-04-02 15:55:23,099] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 15:55:23,103] {taskinstance.py:1069} INFO - Starting attempt 2 of 6
+[2023-04-02 15:55:23,117] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 15:55:23,513] {taskinstance.py:1089} INFO - Executing <Task(_PythonDecoratedOperator): create_spark_session> on 2023-03-30T00:00:00+00:00
+[2023-04-02 15:55:24,052] {standard_task_runner.py:52} INFO - Started process 69 to run task
+[2023-04-02 15:55:24,513] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dag_weather_etl_v01', 'create_spark_session', '2023-03-30T00:00:00+00:00', '--job-id', '109', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_etl_weather.py', '--cfg-path', '/tmp/tmp8ggpdyum', '--error-file', '/tmp/tmpgaxh4ruq']
+[2023-04-02 15:55:24,556] {standard_task_runner.py:77} INFO - Job 109: Subtask create_spark_session
+[2023-04-02 15:55:26,678] {logging_mixin.py:104} INFO - Running <TaskInstance: dag_weather_etl_v01.create_spark_session 2023-03-30T00:00:00+00:00 [running]> on host ab4c74a9709c
+[2023-04-02 15:55:27,987] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=dag_weather_etl_v01
+AIRFLOW_CTX_TASK_ID=create_spark_session
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-30T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-30T00:00:00+00:00
+[2023-04-02 15:55:33,793] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 233, in execute
+    return_value = self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_etl_weather.py", line 44, in create_spark_session
+    .config("spark.driver.port", "50000")\
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/session.py", line 228, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/context.py", line 392, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/context.py", line 144, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/context.py", line 339, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/java_gateway.py", line 108, in launch_gateway
+    raise RuntimeError("Java gateway process exited before sending its port number")
+RuntimeError: Java gateway process exited before sending its port number
+[2023-04-02 15:55:34,192] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_weather_etl_v01, task_id=create_spark_session, execution_date=20230330T000000, start_date=20230402T155523, end_date=20230402T155534
+[2023-04-02 15:55:36,207] {local_task_job.py:188} WARNING - State of this instance has been externally set to up_for_retry. Terminating instance.
+[2023-04-02 15:55:36,329] {process_utils.py:100} INFO - Sending Signals.SIGTERM to GPID 69
+[2023-04-02 15:55:36,541] {process_utils.py:66} INFO - Process psutil.Process(pid=69, status='terminated', exitcode=1, started='15:55:23') (69) terminated with exit code 1

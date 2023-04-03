@@ -1,0 +1,33 @@
+[2023-03-25 19:20:11,739] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_with_taskflow_api_v01.greet 2023-03-24T00:00:00+00:00 [queued]>
+[2023-03-25 19:20:11,758] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_with_taskflow_api_v01.greet 2023-03-24T00:00:00+00:00 [queued]>
+[2023-03-25 19:20:11,759] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-25 19:20:11,760] {taskinstance.py:1069} INFO - Starting attempt 1 of 6
+[2023-03-25 19:20:11,761] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-25 19:20:11,789] {taskinstance.py:1089} INFO - Executing <Task(_PythonDecoratedOperator): greet> on 2023-03-24T00:00:00+00:00
+[2023-03-25 19:20:11,822] {standard_task_runner.py:52} INFO - Started process 95 to run task
+[2023-03-25 19:20:11,831] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dag_with_taskflow_api_v01', 'greet', '2023-03-24T00:00:00+00:00', '--job-id', '25', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_taskflow_api.py', '--cfg-path', '/tmp/tmpa2evhf2v', '--error-file', '/tmp/tmp7brtj2w0']
+[2023-03-25 19:20:11,835] {standard_task_runner.py:77} INFO - Job 25: Subtask greet
+[2023-03-25 19:20:12,054] {logging_mixin.py:104} INFO - Running <TaskInstance: dag_with_taskflow_api_v01.greet 2023-03-24T00:00:00+00:00 [running]> on host 087d02d74a34
+[2023-03-25 19:20:12,298] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=dag_with_taskflow_api_v01
+AIRFLOW_CTX_TASK_ID=greet
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-24T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-24T00:00:00+00:00
+[2023-03-25 19:20:12,307] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 233, in execute
+    return_value = self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_with_taskflow_api.py", line 27, in greet
+    printf(f"Hello world, my name is {name}, Im {age} years old")
+NameError: name 'printf' is not defined
+[2023-03-25 19:20:12,320] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_with_taskflow_api_v01, task_id=greet, execution_date=20230324T000000, start_date=20230325T192011, end_date=20230325T192012
+[2023-03-25 19:20:12,386] {local_task_job.py:146} INFO - Task exited with return code 1

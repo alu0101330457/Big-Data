@@ -1,0 +1,76 @@
+[2023-04-02 17:52:14,520] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v02.process_data 2023-04-01T00:00:00+00:00 [queued]>
+[2023-04-02 17:52:14,536] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v02.process_data 2023-04-01T00:00:00+00:00 [queued]>
+[2023-04-02 17:52:14,537] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 17:52:14,537] {taskinstance.py:1069} INFO - Starting attempt 11 of 16
+[2023-04-02 17:52:14,537] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 17:52:14,544] {taskinstance.py:1089} INFO - Executing <Task(_PythonDecoratedOperator): process_data> on 2023-04-01T00:00:00+00:00
+[2023-04-02 17:52:14,554] {standard_task_runner.py:52} INFO - Started process 1388 to run task
+[2023-04-02 17:52:14,561] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dag_weather_etl_v02', 'process_data', '2023-04-01T00:00:00+00:00', '--job-id', '208', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_etl_weather.py', '--cfg-path', '/tmp/tmpsdc_6a0s', '--error-file', '/tmp/tmpxdla301f']
+[2023-04-02 17:52:14,562] {standard_task_runner.py:77} INFO - Job 208: Subtask process_data
+[2023-04-02 17:52:14,664] {logging_mixin.py:104} INFO - Running <TaskInstance: dag_weather_etl_v02.process_data 2023-04-01T00:00:00+00:00 [running]> on host b24fa9ddb366
+[2023-04-02 17:52:14,723] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=dag_weather_etl_v02
+AIRFLOW_CTX_TASK_ID=process_data
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-01T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-04-01T00:00:00+00:00
+[2023-04-02 17:52:22,278] {logging_mixin.py:104} WARNING - /home/airflow/.local/lib/python3.6/site-packages/pyspark/context.py:238 FutureWarning: Python 3.6 support is deprecated in Spark 3.2.
+[2023-04-02 17:52:24,733] {logging_mixin.py:104} INFO - La fecha 02/04/2023 18:00 no tiene el formato correcto
+[2023-04-02 17:52:24,736] {logging_mixin.py:104} INFO - La fecha 02/04/2023 17:00 no tiene el formato correcto
+[2023-04-02 17:52:24,736] {logging_mixin.py:104} INFO - La fecha 02/04/2023 16:00 no tiene el formato correcto
+[2023-04-02 17:52:24,737] {logging_mixin.py:104} INFO - La fecha 02/04/2023 15:00 no tiene el formato correcto
+[2023-04-02 17:52:24,738] {logging_mixin.py:104} INFO - La fecha 02/04/2023 14:00 no tiene el formato correcto
+[2023-04-02 17:52:24,739] {logging_mixin.py:104} INFO - La fecha 02/04/2023 13:00 no tiene el formato correcto
+[2023-04-02 17:52:24,740] {logging_mixin.py:104} INFO - La fecha 02/04/2023 12:00 no tiene el formato correcto
+[2023-04-02 17:52:24,741] {logging_mixin.py:104} INFO - La fecha 02/04/2023 11:00 no tiene el formato correcto
+[2023-04-02 17:52:24,742] {logging_mixin.py:104} INFO - La fecha 02/04/2023 10:00 no tiene el formato correcto
+[2023-04-02 17:52:24,743] {logging_mixin.py:104} INFO - La fecha 02/04/2023 09:00 no tiene el formato correcto
+[2023-04-02 17:52:24,743] {logging_mixin.py:104} INFO - La fecha 02/04/2023 08:00 no tiene el formato correcto
+[2023-04-02 17:52:24,744] {logging_mixin.py:104} INFO - La fecha 02/04/2023 07:00 no tiene el formato correcto
+[2023-04-02 17:52:24,744] {logging_mixin.py:104} INFO - La fecha 02/04/2023 06:00 no tiene el formato correcto
+[2023-04-02 17:52:24,745] {logging_mixin.py:104} INFO - La fecha 02/04/2023 05:00 no tiene el formato correcto
+[2023-04-02 17:52:24,745] {logging_mixin.py:104} INFO - La fecha 02/04/2023 04:00 no tiene el formato correcto
+[2023-04-02 17:52:24,746] {logging_mixin.py:104} INFO - La fecha 02/04/2023 03:00 no tiene el formato correcto
+[2023-04-02 17:52:24,746] {logging_mixin.py:104} INFO - La fecha 02/04/2023 02:00 no tiene el formato correcto
+[2023-04-02 17:52:24,747] {logging_mixin.py:104} INFO - La fecha 02/04/2023 01:00 no tiene el formato correcto
+[2023-04-02 17:52:24,748] {logging_mixin.py:104} INFO - La fecha 02/04/2023 00:00 no tiene el formato correcto
+[2023-04-02 17:52:24,749] {logging_mixin.py:104} INFO - La fecha 01/04/2023 23:00 no tiene el formato correcto
+[2023-04-02 17:52:24,750] {logging_mixin.py:104} INFO - La fecha 01/04/2023 22:00 no tiene el formato correcto
+[2023-04-02 17:52:24,750] {logging_mixin.py:104} INFO - La fecha 01/04/2023 21:00 no tiene el formato correcto
+[2023-04-02 17:52:24,751] {logging_mixin.py:104} INFO - La fecha 01/04/2023 20:00 no tiene el formato correcto
+[2023-04-02 17:52:24,752] {logging_mixin.py:104} INFO - La fecha 01/04/2023 19:00 no tiene el formato correcto
+[2023-04-02 17:52:24,761] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/arrays/datetimes.py", line 2059, in objects_to_datetime64ns
+    values, tz_parsed = conversion.datetime_to_datetime64(data)
+  File "pandas/_libs/tslibs/conversion.pyx", line 350, in pandas._libs.tslibs.conversion.datetime_to_datetime64
+TypeError: Unrecognized value type: <class 'str'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 233, in execute
+    return_value = self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_etl_weather.py", line 79, in process_data
+    datos_procesados['Fecha'] = pd.to_datetime(datos_procesados['Fecha'], format='%Y-%m-%d %H:%M:%S')
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/tools/datetimes.py", line 803, in to_datetime
+    values = convert_listlike(arg._values, format)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/tools/datetimes.py", line 466, in _convert_listlike_datetimes
+    allow_object=True,
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/arrays/datetimes.py", line 2064, in objects_to_datetime64ns
+    raise e
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/core/arrays/datetimes.py", line 2055, in objects_to_datetime64ns
+    require_iso8601=require_iso8601,
+  File "pandas/_libs/tslib.pyx", line 352, in pandas._libs.tslib.array_to_datetime
+  File "pandas/_libs/tslib.pyx", line 496, in pandas._libs.tslib.array_to_datetime
+ValueError: time data 02/04/2023 18:00 doesn't match format specified
+[2023-04-02 17:52:24,765] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_weather_etl_v02, task_id=process_data, execution_date=20230401T000000, start_date=20230402T175214, end_date=20230402T175224
+[2023-04-02 17:52:24,857] {local_task_job.py:146} INFO - Task exited with return code 1

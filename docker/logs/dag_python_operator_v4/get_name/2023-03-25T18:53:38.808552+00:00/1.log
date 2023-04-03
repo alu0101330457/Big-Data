@@ -1,0 +1,37 @@
+[2023-03-25 18:53:40,286] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_python_operator_v4.get_name 2023-03-25T18:53:38.808552+00:00 [queued]>
+[2023-03-25 18:53:40,305] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_python_operator_v4.get_name 2023-03-25T18:53:38.808552+00:00 [queued]>
+[2023-03-25 18:53:40,306] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-25 18:53:40,309] {taskinstance.py:1069} INFO - Starting attempt 1 of 6
+[2023-03-25 18:53:40,309] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-25 18:53:40,316] {taskinstance.py:1089} INFO - Executing <Task(PythonOperator): get_name> on 2023-03-25T18:53:38.808552+00:00
+[2023-03-25 18:53:40,321] {standard_task_runner.py:52} INFO - Started process 59 to run task
+[2023-03-25 18:53:40,327] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dag_python_operator_v4', 'get_name', '2023-03-25T18:53:38.808552+00:00', '--job-id', '7', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/create_dag_with_python_operator.py', '--cfg-path', '/tmp/tmpwm0w41dj', '--error-file', '/tmp/tmp_cab52to']
+[2023-03-25 18:53:40,329] {standard_task_runner.py:77} INFO - Job 7: Subtask get_name
+[2023-03-25 18:53:40,380] {logging_mixin.py:104} INFO - Running <TaskInstance: dag_python_operator_v4.get_name 2023-03-25T18:53:38.808552+00:00 [running]> on host 087d02d74a34
+[2023-03-25 18:53:40,434] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=dag_python_operator_v4
+AIRFLOW_CTX_TASK_ID=get_name
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-25T18:53:38.808552+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-25T18:53:38.808552+00:00
+[2023-03-25 18:53:40,437] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 117, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 128, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/create_dag_with_python_operator.py", line 20, in get_name
+    ti.xcom_pull(key= 'first_name', value='Mario')
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/utils/session.py", line 70, in wrapper
+    return func(*args, session=session, **kwargs)
+TypeError: xcom_pull() got an unexpected keyword argument 'value'
+[2023-03-25 18:53:40,445] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_python_operator_v4, task_id=get_name, execution_date=20230325T185338, start_date=20230325T185340, end_date=20230325T185340
+[2023-03-25 18:53:40,505] {local_task_job.py:146} INFO - Task exited with return code 1

@@ -1,0 +1,75 @@
+[2023-04-02 18:56:37,124] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v02.process_data 2023-04-02T18:56:35.383078+00:00 [queued]>
+[2023-04-02 18:56:37,162] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v02.process_data 2023-04-02T18:56:35.383078+00:00 [queued]>
+[2023-04-02 18:56:37,163] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 18:56:37,163] {taskinstance.py:1069} INFO - Starting attempt 1 of 6
+[2023-04-02 18:56:37,164] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 18:56:37,173] {taskinstance.py:1089} INFO - Executing <Task(_PythonDecoratedOperator): process_data> on 2023-04-02T18:56:35.383078+00:00
+[2023-04-02 18:56:37,193] {standard_task_runner.py:52} INFO - Started process 4518 to run task
+[2023-04-02 18:56:37,200] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dag_weather_etl_v02', 'process_data', '2023-04-02T18:56:35.383078+00:00', '--job-id', '229', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_etl_weather.py', '--cfg-path', '/tmp/tmpbg7ou2ub', '--error-file', '/tmp/tmpbm1ltfyw']
+[2023-04-02 18:56:37,201] {standard_task_runner.py:77} INFO - Job 229: Subtask process_data
+[2023-04-02 18:56:37,287] {logging_mixin.py:104} INFO - Running <TaskInstance: dag_weather_etl_v02.process_data 2023-04-02T18:56:35.383078+00:00 [running]> on host b24fa9ddb366
+[2023-04-02 18:56:37,347] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=dag_weather_etl_v02
+AIRFLOW_CTX_TASK_ID=process_data
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-02T18:56:35.383078+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-02T18:56:35.383078+00:00
+[2023-04-02 18:56:44,020] {logging_mixin.py:104} WARNING - /home/airflow/.local/lib/python3.6/site-packages/pyspark/context.py:238 FutureWarning: Python 3.6 support is deprecated in Spark 3.2.
+[2023-04-02 18:56:46,123] {logging_mixin.py:104} INFO - There are NaN values in the data!
+[2023-04-02 18:56:46,173] {logging_mixin.py:104} INFO - La fecha 02/04/2023 19:00 no tiene el formato correcto
+[2023-04-02 18:56:46,176] {logging_mixin.py:104} INFO - La fecha 02/04/2023 18:00 no tiene el formato correcto
+[2023-04-02 18:56:46,178] {logging_mixin.py:104} INFO - La fecha 02/04/2023 17:00 no tiene el formato correcto
+[2023-04-02 18:56:46,180] {logging_mixin.py:104} INFO - La fecha 02/04/2023 16:00 no tiene el formato correcto
+[2023-04-02 18:56:46,181] {logging_mixin.py:104} INFO - La fecha 02/04/2023 15:00 no tiene el formato correcto
+[2023-04-02 18:56:46,182] {logging_mixin.py:104} INFO - La fecha 02/04/2023 14:00 no tiene el formato correcto
+[2023-04-02 18:56:46,185] {logging_mixin.py:104} INFO - La fecha 02/04/2023 13:00 no tiene el formato correcto
+[2023-04-02 18:56:46,193] {logging_mixin.py:104} INFO - La fecha 02/04/2023 12:00 no tiene el formato correcto
+[2023-04-02 18:56:46,198] {logging_mixin.py:104} INFO - La fecha 02/04/2023 11:00 no tiene el formato correcto
+[2023-04-02 18:56:46,199] {logging_mixin.py:104} INFO - La fecha 02/04/2023 10:00 no tiene el formato correcto
+[2023-04-02 18:56:46,200] {logging_mixin.py:104} INFO - La fecha 02/04/2023 09:00 no tiene el formato correcto
+[2023-04-02 18:56:46,201] {logging_mixin.py:104} INFO - La fecha 02/04/2023 08:00 no tiene el formato correcto
+[2023-04-02 18:56:46,203] {logging_mixin.py:104} INFO - La fecha 02/04/2023 07:00 no tiene el formato correcto
+[2023-04-02 18:56:46,204] {logging_mixin.py:104} INFO - La fecha 02/04/2023 06:00 no tiene el formato correcto
+[2023-04-02 18:56:46,204] {logging_mixin.py:104} INFO - La fecha 02/04/2023 05:00 no tiene el formato correcto
+[2023-04-02 18:56:46,205] {logging_mixin.py:104} INFO - La fecha 02/04/2023 04:00 no tiene el formato correcto
+[2023-04-02 18:56:46,206] {logging_mixin.py:104} INFO - La fecha 02/04/2023 03:00 no tiene el formato correcto
+[2023-04-02 18:56:46,207] {logging_mixin.py:104} INFO - La fecha 02/04/2023 02:00 no tiene el formato correcto
+[2023-04-02 18:56:46,208] {logging_mixin.py:104} INFO - La fecha 02/04/2023 01:00 no tiene el formato correcto
+[2023-04-02 18:56:46,208] {logging_mixin.py:104} INFO - La fecha 02/04/2023 00:00 no tiene el formato correcto
+[2023-04-02 18:56:46,209] {logging_mixin.py:104} INFO - La fecha 01/04/2023 23:00 no tiene el formato correcto
+[2023-04-02 18:56:46,210] {logging_mixin.py:104} INFO - La fecha 01/04/2023 22:00 no tiene el formato correcto
+[2023-04-02 18:56:46,211] {logging_mixin.py:104} INFO - La fecha 01/04/2023 21:00 no tiene el formato correcto
+[2023-04-02 18:56:46,211] {logging_mixin.py:104} INFO - La fecha 01/04/2023 20:00 no tiene el formato correcto
+[2023-04-02 18:56:46,284] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 233, in execute
+    return_value = self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_etl_weather.py", line 74, in process_data
+    spark_df = (spark.createDataFrame(datos_procesados)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/session.py", line 674, in createDataFrame
+    data, schema, samplingRatio, verifySchema)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/pandas/conversion.py", line 340, in createDataFrame
+    return self._create_dataframe(data, schema, samplingRatio, verifySchema)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/session.py", line 700, in _create_dataframe
+    rdd, schema = self._createFromLocal(map(prepare, data), schema)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/session.py", line 512, in _createFromLocal
+    struct = self._inferSchemaFromList(data, names=schema)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/session.py", line 439, in _inferSchemaFromList
+    schema = reduce(_merge_type, (_infer_schema(row, names) for row in data))
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/types.py", line 1111, in _merge_type
+    for f in a.fields]
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/types.py", line 1111, in <listcomp>
+    for f in a.fields]
+  File "/home/airflow/.local/lib/python3.6/site-packages/pyspark/sql/types.py", line 1104, in _merge_type
+    raise TypeError(new_msg("Can not merge type %s and %s" % (type(a), type(b))))
+TypeError: field Tendencia_hPa: Can not merge type <class 'pyspark.sql.types.DoubleType'> and <class 'pyspark.sql.types.StringType'>
+[2023-04-02 18:56:46,298] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_weather_etl_v02, task_id=process_data, execution_date=20230402T185635, start_date=20230402T185637, end_date=20230402T185646
+[2023-04-02 18:56:46,449] {local_task_job.py:146} INFO - Task exited with return code 1

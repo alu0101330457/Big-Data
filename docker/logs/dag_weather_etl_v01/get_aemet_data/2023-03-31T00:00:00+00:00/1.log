@@ -1,0 +1,43 @@
+[2023-04-02 14:38:19,255] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v01.get_aemet_data 2023-03-31T00:00:00+00:00 [queued]>
+[2023-04-02 14:38:20,392] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dag_weather_etl_v01.get_aemet_data 2023-03-31T00:00:00+00:00 [queued]>
+[2023-04-02 14:38:20,453] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 14:38:20,462] {taskinstance.py:1069} INFO - Starting attempt 1 of 6
+[2023-04-02 14:38:20,473] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-02 14:38:20,760] {taskinstance.py:1089} INFO - Executing <Task(_PythonDecoratedOperator): get_aemet_data> on 2023-03-31T00:00:00+00:00
+[2023-04-02 14:38:21,210] {standard_task_runner.py:52} INFO - Started process 71 to run task
+[2023-04-02 14:38:21,330] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dag_weather_etl_v01', 'get_aemet_data', '2023-03-31T00:00:00+00:00', '--job-id', '84', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_etl_weather.py', '--cfg-path', '/tmp/tmprujgtgdl', '--error-file', '/tmp/tmpsf7tbcc9']
+[2023-04-02 14:38:21,337] {standard_task_runner.py:77} INFO - Job 84: Subtask get_aemet_data
+[2023-04-02 14:38:22,047] {logging_mixin.py:104} INFO - Running <TaskInstance: dag_weather_etl_v01.get_aemet_data 2023-03-31T00:00:00+00:00 [running]> on host 225b241d8a3d
+[2023-04-02 14:38:23,396] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Mario
+AIRFLOW_CTX_DAG_ID=dag_weather_etl_v01
+AIRFLOW_CTX_TASK_ID=get_aemet_data
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-31T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-31T00:00:00+00:00
+[2023-04-02 14:38:29,126] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 233, in execute
+    return_value = self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_etl_weather.py", line 32, in get_aemet_data
+    df = pd.read_excel(r.content, skiprows=3)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/util/_decorators.py", line 296, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 304, in read_excel
+    io = ExcelFile(io, engine=engine)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/excel/_base.py", line 867, in __init__
+    self._reader = self._engines[engine](self._io)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/io/excel/_xlrd.py", line 21, in __init__
+    import_optional_dependency("xlrd", extra=err_msg)
+  File "/home/airflow/.local/lib/python3.6/site-packages/pandas/compat/_optional.py", line 110, in import_optional_dependency
+    raise ImportError(msg) from None
+ImportError: Missing optional dependency 'xlrd'. Install xlrd >= 1.0.0 for Excel support Use pip or conda to install xlrd.
+[2023-04-02 14:38:29,242] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_weather_etl_v01, task_id=get_aemet_data, execution_date=20230331T000000, start_date=20230402T143819, end_date=20230402T143829
+[2023-04-02 14:38:30,246] {local_task_job.py:146} INFO - Task exited with return code 1
