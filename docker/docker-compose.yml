@@ -13,6 +13,9 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+    # AIRFLOW_CONN_SPARK_LOCAL: spark://spark:7077
+    # AIRFLOW_CONN_HIVE_DEFAULT: thrift://hive-server:10000/default
+
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
@@ -26,6 +29,7 @@ x-airflow-common:
 
 services:
   jupyterlab:
+    platform: linux/amd64
     image: wittline/jupyterlab:3.0.0-spark-3.0.0
     container_name: jupyterlab
     ports:
@@ -34,10 +38,11 @@ services:
     volumes:
       - ./workspace:/opt/workspace
   spark-master:
+    platform: linux/amd64
     image: wittline/spark-master:3.0.0
     container_name: spark-master
     ports:
-      - 8080:8080
+      - 8083:8080
       - 7077:7077
     env_file:
       - ./base/hadoop/hadoop-hive.env
@@ -48,6 +53,7 @@ services:
       - ./base/spark_conf/hadoop:/etc/hadoop/conf/
       - ./base/spark_conf/hive/hive-site.xml:/usr/bin/spark-3.0.0-bin-hadoop3.2/conf/hive-site.xml
   spark-worker-1:
+    platform: linux/amd64
     image: wittline/spark-worker:3.0.0
     container_name: spark-worker-1
     depends_on:
@@ -65,6 +71,7 @@ services:
       - ./base/spark_conf/hadoop:/etc/hadoop/conf/
       - ./base/spark_conf/hive/hive-site.xml:/usr/bin/spark-3.0.0-bin-hadoop3.2/conf/hive-site.xml
   spark-worker-2:
+    platform: linux/amd64
     image: wittline/spark-worker:3.0.0
     container_name: spark-worker-2
     depends_on:
@@ -83,6 +90,7 @@ services:
       - ./base/spark_conf/hive/hive-site.xml:/usr/bin/spark-3.0.0-bin-hadoop3.2/conf/hive-site.xml
   
   namenode:
+    platform: linux/amd64
     image: fjardim/namenode_sqoop
     container_name: namenode
     hostname: namenode
@@ -97,9 +105,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
 
   datanode1:
+    platform: linux/amd64
     image: fjardim/datanode
     container_name: datanode1
     hostname: datanode1
@@ -116,9 +125,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
 
   datanode2:
+    platform: linux/amd64
     image: fjardim/datanode
     container_name: datanode2
     hostname: datanode2
@@ -135,9 +145,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
   
   hive-server:
+    platform: linux/amd64
     image: fjardim/hive
     container_name: hive-server
     hostname: hive_server
@@ -145,6 +156,8 @@ services:
       - ./base/hadoop/hadoop-hive.env
     volumes:
       - ./workspace:/opt/workspace
+      - ./base/spark_conf/hive/hive-site.xml:/opt/hive/conf/hive-site.xml
+
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
       SERVICE_PRECONDITION: "hive-metastore:9083"
@@ -155,9 +168,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
   
   hive-metastore:
+    platform: linux/amd64
     image: fjardim/hive
     container_name: hive_metastore
     hostname: hive_metastore
@@ -173,9 +187,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
   
   hive-metastore-postgresql:
+    platform: linux/amd64
     image: fjardim/hive-metastore
     container_name: hive-metastore-postgresql
     hostname: hive_metastore_postgresql
@@ -187,9 +202,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
 
   hue:
+    platform: linux/amd64
     image: fjardim/hue
     hostname: hue
     container_name: hue
@@ -202,9 +218,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
   
   database:
+    platform: linux/amd64
     image: fjardim/mysql
     container_name: database
     hostname: database
@@ -213,7 +230,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 500m
+          memory: 10g
     command: mysqld --innodb-flush-method=O_DSYNC --innodb-use-native-aio=OFF --init-file /data/application/init.sql
     volumes:
         - ./base/mysql/data:/var/lib/mysql
@@ -226,6 +243,7 @@ services:
         MYSQL_PASSWORD: secret
         
   postgres:
+    platform: linux/amd64
     image: postgres:13
     environment:
       POSTGRES_USER: airflow
@@ -239,7 +257,8 @@ services:
       retries: 5
     restart: always
 
-  redis:
+  redis: 
+    platform: linux/amd64
     image: redis:latest
     ports:
       - 6379:6379
@@ -254,7 +273,7 @@ services:
     <<: *airflow-common
     command: webserver
     ports:
-      - 8083:8080
+      - 8080:8080
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 10s
